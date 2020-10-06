@@ -57,13 +57,13 @@ MYString operator + (const MYString& s1, const MYString& s2) {
 	int len1 = s1.size();
 	int len2 = s2.size();
 	
-	//char* concat_str = new char[len1 + len2];
+	char* concat_str = new char[len1 + len2 + 2];
 	//MYString* concat_str;
 	//concat_str = s1.get_c_str();
 	
-	strcat(s1.get_c_str(), s2.get_c_str());
-	//memcpy(&concat_str, s1.get_c_str(), len1 * sizeof(char));
-	//memcpy(&concat_str[len1*sizeof(char)], s2.get_c_str(), len2*sizeof(char));
+	//strcat(s1.get_c_str(), s2.get_c_str());
+	memcpy(&concat_str, s1.get_c_str(), len1 * sizeof(char)+1);
+	memcpy(&concat_str[len1*sizeof(char)+2], s2.get_c_str(), len2*sizeof(char)+1);
 	return s1;
 }
 //#endif
